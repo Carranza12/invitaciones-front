@@ -1,1 +1,241 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100&display=swap");
+body {
+  font-family: "Roboto", sans-serif;
+  
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.main_container {
+  width: calc(100vw - 200px);
+  margin-left: 200px;
+  padding: 10px;
+  height: 100vh;
+  @media (max-width: 1024px) {
+    width: 100vw;
+    margin-left: 0px;
+}
+}
+
+.table_grid {
+  border-collapse: collapse;
+  width: 70%;
+}
+
+.icon_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.table_grid th,
+.table_grid td {
+  padding: 8px;
+  text-align: left;
+}
+
+.table_grid th {
+  background-color: #b21e36;
+  color: white;
+}
+
+.table_grid tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.table_grid tr:hover {
+  background-color: #e0e0e0;
+}
+
+/* Media query para pantallas de 320px o más */
+@media screen and (min-width: 340px) {
+  .table_grid {
+    width: 100%; /* Ajusta el ancho al 100% para pantallas pequeñas */
+  }
+  
+}
+@media screen and (max-width: 430px) {
+  .table_grid {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-x: scroll;
+  }
+  .table_grid th,
+  .table_grid td {
+    min-width: 220px;
+    max-width: 220px;
+    font-size: 12px;
+  }
+  
+}
+.btn_primary {
+  margin: 5px;
+  border-radius: 30px;
+  font-size: 20px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: #b21e36;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-disabled {
+  background: rgba(178, 30, 54, 0.5); 
+  color: rgba(255, 255, 255, 0.7); 
+  cursor: not-allowed; 
+}
+
+.btn_download_csv {
+  margin: 5px;
+  border-radius: 30px;
+  font-size: 20px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: #80b759;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn_icon {
+  margin: 5px;
+  border-radius: 50%;
+  font-size: 16px;
+  padding: 5px;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: #b21e36;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.form_input,
+.form_input select {
+  height: 40px;
+  border: none;
+  background: #efefef;
+  outline: none;
+  border-radius: 8px;
+  padding: 10px;
+  color: #8d8b8b;
+  @media(max-width:473px){
+    width: 100%!important;
+  }
+  margin-bottom: 10px;
+//  margin-top: 10px;
+  width: 70%;
+}
+
+.form_textarea{
+  width: 70%;
+  height: 130px!important;
+}
+
+.label_input{
+  margin: 0px;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.form_control{
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+}
+
+.form_input select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: 30px;
+  cursor: pointer;
+}
+
+.form_input select:focus {
+  background-color: #ffffff;
+}
+
+.error-message {
+  color: red;
+  font-weight: 500;
+}
+
+/* Estilo del input nativo (oculto) */
+.input-file {
+  display: none;
+}
+.deshabilitado {
+  pointer-events: none; 
+}
+
+/* Estilo del botón personalizado */
+.custom-file-button {
+  display: flex;
+  padding: 10px 10px 20px;
+  background-color: #b21e36;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  transition: background-color 0.3s ease;
+  width:fit-content;
+  justify-content: center;
+}
+
+/* Estilo para hover */
+.custom-file-button:hover {
+  background-color: #1d7971;
+}
+
+.checkbox_input {
+  width: 20px;
+  height: 20px;
+  border-radius: 13px;
+  
+}
+
+.firma_container{
+    border: 1px dashed #000;
+    margin-bottom: 20px;
+    width: 400px;
+}
+
+.form_control_check{
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 14px;
+  gap: 15px;
+  div{
+    display: flex;
+    gap: 5px;
+    font-weight: 500;
+  }
+}
