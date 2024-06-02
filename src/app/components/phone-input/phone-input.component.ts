@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, input, output } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -14,6 +14,7 @@ import {
   styleUrl: './phone-input.component.scss',
 })
 export class PhoneInputComponent {
+  @Output() phone = new EventEmitter<any>();
   phoneForm!: FormGroup;
   countries = [
     { name: 'United States', code: 'US', dialCode: '+1', flag: '🇺🇸' },
@@ -49,16 +50,29 @@ export class PhoneInputComponent {
       phone: ['', [Validators.required, Validators.pattern(/^\d{7,15}$/)]],
     });
 
-    // Inicializar con el primer país en la lista
     if (this.countries.length > 0) {
       this.selectedDialCode = this.countries[0].dialCode;
       this.phoneForm.patchValue({ country: this.selectedDialCode });
     }
+
+    this.phoneForm.controls['phone'].valueChanges.subscribe((value: string) => {
+      if (value) {
+        this.phone.emit({
+          code: this.phoneForm.controls['country'].value || '',
+          number: value,
+        });
+      }
+    });
   }
 
   onCountryChange(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
     this.selectedDialCode = selectElement.value;
+    this.phoneForm.controls['country'].setValue(this.selectedDialCode);
+    this.phone.emit({
+      code: this.phoneForm.controls['country'].value || '',
+      number: this.phoneForm.controls['phone'].value || '',
+    });
   }
 
   onSubmit() {

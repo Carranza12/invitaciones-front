@@ -2,6 +2,9 @@
 .contenedor{
     
 }
+.select-phone{
+    width:100px!important;
+  }
 .phone-form {
     font-family: Arial, sans-serif;
     width: 300px;
@@ -11,6 +14,7 @@
     border-radius: 5px;
 
   }
+ 
   
   .form-group {
     margin-bottom: 15px;
@@ -32,6 +36,8 @@
   
   .phone-input {
     display: flex;
+    margin-top: 10px;
+    gap: 10px;
   }
   
   .dial-code {

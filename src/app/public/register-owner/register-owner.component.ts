@@ -59,4 +59,8 @@ export class RegisterOwnerComponent implements OnInit {
   }
 
   onSubmit() {}
+
+  onChangePhone(event:Event){
+    console.log("datos recibidos:", event)
+  }
 }

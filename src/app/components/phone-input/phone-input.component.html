@@ -1,31 +1,21 @@
 <div class="contenedor">
-    <!-- phone-input.component.html -->
-<form [formGroup]="phoneForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="country">País</label>
-      <select
-      class="form_input"
-        id="country"
-        formControlName="country"
-        (change)="onCountryChange($event)"
-      >
-        @for (country of countries; track $index) {
-        <option [value]="country.dialCode">
-          {{ country.flag }} {{ country.name }} ({{ country.dialCode }})
-        </option>
-        }
-      </select>
-    </div>
+  <!-- phone-input.component.html -->
+  <form [formGroup]="phoneForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="phone">Número de Teléfono</label>
       <div class="phone-input">
-        <input
-          type="text"
-          id="dialCode"
-          [value]="selectedDialCode"
-          disabled
-          class="form_input"
-        />
+        <select
+          class="form_input select-phone"
+          id="country"
+          formControlName="country"
+          (change)="onCountryChange($event)"
+        >
+          @for (country of countries; track $index) {
+          <option [value]="country.dialCode">
+            {{ country.flag }} ({{ country.dialCode }})
+          </option>
+          }
+        </select>
         <input
           type="text"
           id="phone"
@@ -33,6 +23,10 @@
           class="form_input"
         />
       </div>
+      @if ( phoneForm.get("phone")?.invalid && phoneForm.get("phone")?.touched)
+      {
+      <div class="error-message">Proporciona un numero valido.</div>
+      }
     </div>
   </form>
 </div>
