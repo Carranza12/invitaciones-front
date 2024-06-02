@@ -1,0 +1,77 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #2c3e50;
+  color: white;
+  overflow-y: auto;
+  position: fixed;
+  transition: width 0.3s;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #34495e;
+
+    .profile-image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .profile-info {
+      .profile-name {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .profile-role {
+        font-size: 14px;
+        color: #bdc3c7;
+      }
+    }
+  }
+}
+.sidebar-section {
+  padding: 10px;
+  cursor: pointer;
+  .section-title {
+    font-weight: bold;
+    padding: 10px 0;
+  }
+  .submodules {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    &.expanded {
+      max-height: 500px; // Ajusta según la cantidad de submódulos
+      transition: max-height 0.5s ease-in;
+    }
+  }
+}
+
+.sidebar-subsection {
+  padding: 10px 20px;
+  background-color: #34495e;
+  &:hover {
+    background-color: #3b5998;
+  }
+}
+.content {
+  margin-left: 250px;
+  padding: 20px;
+  background-color: #ecf0f1;
+  height: 100vh;
+  overflow-y: auto;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
+}

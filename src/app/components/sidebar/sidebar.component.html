@@ -1,0 +1,17 @@
+<div class="sidebar">
+  <div class="profile">
+    <img [src]="user.img" alt="User Profile Image" class="profile-image">
+    <div class="profile-info">
+      <div class="profile-name">{{ user.fullName }}</div>
+      <div class="profile-role">{{ user.role }}</div>
+    </div>
+  </div>
+  <div *ngFor="let section of sections; let i = index" class="sidebar-section" (click)="toggle(i)">
+    <div class="section-title">{{ section.title }}</div>
+    <div class="submodules" [ngClass]="{ 'expanded': section.expanded }">
+      <div *ngFor="let submodule of section.submodules" class="sidebar-subsection">
+        {{ submodule }}
+      </div>
+    </div>
+  </div>
+</div>
