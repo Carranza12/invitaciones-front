@@ -1,0 +1,84 @@
+.navbar {
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    .navbar-container {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .navbar-logo a {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  
+    .navbar-menu {
+      display: flex;
+      align-items: center;
+  
+      .navbar-item {
+        position: relative;
+        margin-left: 20px;
+        cursor: pointer;
+  
+        .icon {
+          font-size: 24px;
+        }
+  
+        .badge {
+          background-color: red;
+          border-radius: 50%;
+          color: white;
+          padding: 2px 6px;
+          font-size: 12px;
+          position: absolute;
+          top: 0;
+          right: -10px;
+        }
+  
+        .dropdown-menu {
+          display: none;
+          position: absolute;
+          top: 30px;
+          right: 0;
+          background-color: #34495e;
+          border-radius: 4px;
+          min-width: 150px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+          z-index: 1000;
+  
+          &.show {
+            display: block;
+          }
+  
+          .dropdown-item {
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            display: block;
+  
+            &:hover {
+              background-color: #3b5998;
+            }
+          }
+        }
+  
+        &.profile {
+          img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+  }
+  

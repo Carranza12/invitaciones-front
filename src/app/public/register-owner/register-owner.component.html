@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>Registra tu negocio</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    @for (input of inputs; track $index) {
+    <div class="form_child">
+      <p>
+        {{ input.label }}
+        @if (input.required) {
+        <span style="color: red">*</span>
+        }
+      </p>
+      <input
+        class="form_input"
+        [type]="input.type"
+        [formControlName]="input.FormControlName"
+        [autocomplete]="input.autocomplete"
+      />
+      @for (validator of input.validators; track $index) { @if (
+      form.get(input.FormControlName)?.hasError(validator.type) &&
+      form.get(input.FormControlName)?.touched) {
+      <div class="error-message">{{ validator.message }}</div>
+      } }
+    </div>
+    }
+  </form>
+</div>

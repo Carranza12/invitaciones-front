@@ -48,10 +48,9 @@ body {
   background-color: #e0e0e0;
 }
 
-/* Media query para pantallas de 320px o más */
 @media screen and (min-width: 340px) {
   .table_grid {
-    width: 100%; /* Ajusta el ancho al 100% para pantallas pequeñas */
+    width: 100%; 
   }
   
 }
@@ -142,7 +141,6 @@ body {
     width: 100%!important;
   }
   margin-bottom: 10px;
-//  margin-top: 10px;
   width: 70%;
 }
 
@@ -185,7 +183,6 @@ body {
   font-weight: 500;
 }
 
-/* Estilo del input nativo (oculto) */
 .input-file {
   display: none;
 }
@@ -193,7 +190,6 @@ body {
   pointer-events: none; 
 }
 
-/* Estilo del botón personalizado */
 .custom-file-button {
   display: flex;
   padding: 10px 10px 20px;
@@ -208,7 +204,6 @@ body {
   justify-content: center;
 }
 
-/* Estilo para hover */
 .custom-file-button:hover {
   background-color: #1d7971;
 }

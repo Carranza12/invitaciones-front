@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { superAdminHomeComponent } from './superadmin/pages/home/home.component';
 import { superAdminGuard } from './superadmin/guards/superadmin.guard';
+import { RegisterOwnerComponent } from './public/register-owner/register-owner.component';
 
 export const routes: Routes = [
     {
@@ -12,6 +13,10 @@ export const routes: Routes = [
         path: "superAdmin/home",
         component: superAdminHomeComponent,
         canActivate: [superAdminGuard]
+    },
+    {
+        path: "owner/register",
+        component: RegisterOwnerComponent
     },
     {
         path: '',

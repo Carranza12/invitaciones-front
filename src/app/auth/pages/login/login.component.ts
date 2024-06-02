@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     if (userString) {
       const user = JSON.parse(userString);
       if (user.role) {
-        this.router.navigateByUrl('/' + user.role);
+        this.router.navigateByUrl('/' + user.role+'/home');
       } else {
         this.router.navigate(['/login']);
       }

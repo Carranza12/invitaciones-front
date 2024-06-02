@@ -1,0 +1,35 @@
+<nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <a href="#">Logo</a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-item" (click)="toggleDropdown('notifications')">
+          <span class="icon">&#128276;</span>
+          <span class="badge">3</span>
+          <div class="dropdown-menu" [ngClass]="{'show': dropdowns.notifications}">
+            <div class="dropdown-item">Notification 1</div>
+            <div class="dropdown-item">Notification 2</div>
+            <div class="dropdown-item">Notification 3</div>
+          </div>
+        </div>
+        <div class="navbar-item" (click)="toggleDropdown('shortcuts')">
+          <span class="icon">&#9881;</span>
+          <div class="dropdown-menu" [ngClass]="{'show': dropdowns.shortcuts}">
+            <div class="dropdown-item">Shortcut 1</div>
+            <div class="dropdown-item">Shortcut 2</div>
+            <div class="dropdown-item">Shortcut 3</div>
+          </div>
+        </div>
+        <div class="navbar-item profile" (click)="toggleDropdown('profile')">
+          <img src="path/to/profile-image.jpg" alt="User Profile Image">
+          <div class="dropdown-menu" [ngClass]="{'show': dropdowns.profile}">
+            <div class="dropdown-item">Profile</div>
+            <div class="dropdown-item">Settings</div>
+            <div class="dropdown-item">Logout</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
