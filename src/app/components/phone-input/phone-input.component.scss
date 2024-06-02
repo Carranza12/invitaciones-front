@@ -1,0 +1,68 @@
+/* phone-input.component.scss */
+.contenedor{
+    
+}
+.phone-form {
+    font-family: Arial, sans-serif;
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    
+  }
+  
+  .label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .country-select select {
+    padding: 8px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .phone-input {
+    display: flex;
+  }
+  
+  .dial-code {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-right: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .phone-number {
+    flex: 4;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  

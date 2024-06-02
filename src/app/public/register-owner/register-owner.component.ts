@@ -6,11 +6,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { FormService } from '../../services/form.service';
+import { PhoneInputComponent } from '../../components/phone-input/phone-input.component';
 
 @Component({
   selector: 'app-register-owner',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,PhoneInputComponent],
   templateUrl: './register-owner.component.html',
   styleUrl: './register-owner.component.scss',
 })
