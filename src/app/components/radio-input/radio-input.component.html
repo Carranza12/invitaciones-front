@@ -1,0 +1,17 @@
+<p>
+    De que tipo es tu negocio?
+    <span style="color: red">*</span>
+  </p>
+  <div class="custom-radio-container">
+   
+    @for (option of options; track $index) {
+    <div
+      class="custom-radio-box"
+      [class.selected]="selectedOption === option.value"
+      (click)="selectOption(option.value)"
+    >
+      <img [src]="option.image" alt="option image" class="option-image" />
+      <p>{{ option.text }}</p>
+    </div>
+    }
+  </div>

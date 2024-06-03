@@ -24,5 +24,32 @@
     }
 
     <phone-input (phone)="onChangePhone($event)"></phone-input>
+    <date-input
+      (dateSelected)="onChangeDate($event)"
+      [data]="{
+        title: 'Fecha de nacimiento',
+        formControlName: 'fecha_nacimiento'
+      }"
+    ></date-input>
+
+    <div class="form_child">
+      <p>
+        Nombre del negocio
+        <span style="color: red">*</span>
+      </p>
+      <input
+        class="form_input"
+        type="text"
+        [formControl]="businessName"
+        autocomplete="off"
+      />
+      @if ( businessName.hasError("required") && businessName.touched) {
+      <div class="error-message">El nombre del negocio es obligatorio.</div>
+      }
+    </div>
+
+    <radio-input [options]="options" (changeOption)="changeTipoNegocio($event)"></radio-input>
+
+    
   </form>
 </div>

@@ -1,0 +1,27 @@
+<p>{{ data.title }} <span style="color: red">*</span></p>
+<div class="container">
+  <div class="form-control">
+    <label for="day">Día:</label>
+    <select class="form_input" id="day" (change)="onDayChange($event)">
+      <option *ngFor="let day of daysInMonthArray" [value]="day">
+        {{ day }}
+      </option>
+    </select>
+  </div>
+  <div class="form-control">
+    <label for="month">Mes:</label>
+    <select class="form_input" id="month" (change)="onMonthChange($event)">
+      <option *ngFor="let month of monthsArray" [value]="month">
+        {{ month }}
+      </option>
+    </select>
+  </div>
+  <div class="form-control">
+    <label for="year">Año:</label> 
+    <select class="form_input" id="year" (change)="onYearChange($event)">
+      <option *ngFor="let year of yearsArray" [value]="year">{{ year }}</option>
+    </select>
+  </div>
+</div>
+
+
