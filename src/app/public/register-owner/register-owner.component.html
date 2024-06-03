@@ -48,8 +48,22 @@
       }
     </div>
 
-    <radio-input [options]="options" (changeOption)="changeTipoNegocio($event)"></radio-input>
+    <radio-input
+      label="De que tipo es tu negocio?"
+      [options]="options"
+      (changeOption)="changeTipoNegocio($event)"
+    ></radio-input>
 
-    
+    <radio-input
+    label="Escoge una categoria"
+    [options]="options"
+    (changeOption)="changeTipoNegocio($event)"
+  ></radio-input>
+
+  <radio-input
+  label="Selecciona el rubro de tu negocio"
+  [options]="options"
+  (changeOption)="changeTipoNegocio($event)"
+></radio-input>
   </form>
 </div>

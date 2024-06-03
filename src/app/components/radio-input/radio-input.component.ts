@@ -9,6 +9,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class RadioInputComponent {
   @Input() options!: any;
+  @Input() label!: string;
   @Output() changeOption = new EventEmitter<any>();
   public selectedOption = '';
   selectOption(value: any) {
