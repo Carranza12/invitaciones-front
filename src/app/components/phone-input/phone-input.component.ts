@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, input, output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, input, output } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -15,6 +15,7 @@ import {
 })
 export class PhoneInputComponent {
   @Output() phone = new EventEmitter<any>();
+  @Input() title!:string;
   phoneForm!: FormGroup;
   countries = [
     { name: 'United States', code: 'US', dialCode: '+1', flag: '🇺🇸' },

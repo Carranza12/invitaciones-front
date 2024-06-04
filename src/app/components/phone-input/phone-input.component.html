@@ -2,7 +2,7 @@
   <!-- phone-input.component.html -->
   <form [formGroup]="phoneForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="phone">Número de Teléfono</label>
+      <label for="phone">{{ title }} </label>
       <div class="phone-input">
         <select
           class="form_input select-phone"

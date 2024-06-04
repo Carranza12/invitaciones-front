@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -21,10 +26,16 @@ export class FormService {
     }
     return validatorFns;
   }
-  public buildFormControls(inputs: any[]): FormGroup {
+  public buildFormControls(form: any): FormGroup {
+    const inputs = form.inputs;
     const group: { [key: string]: any } = {};
-    inputs.forEach((input) => {
-      group[input.FormControlName] = ['', this.getValidators(input.validators)];
+    inputs.forEach((input:any) => {
+      if (input.type === 'email' || input.type === 'text') {
+        group[input.FormControlName] = [
+          '',
+          this.getValidators(input.validators),
+        ];
+      }
     });
     return this.formBuilder.group(group);
   }
