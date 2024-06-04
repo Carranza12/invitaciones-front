@@ -19,12 +19,15 @@ export class FormComponent implements OnInit{
   _formSVC = inject(FormService);
   
   ngOnInit(): void {
-    console.log("form:", this.form)
     this.formGroup = this._formSVC.buildFormControls(this.form)
-    console.log(" this.formGroup :",  this.formGroup.value )
   }
 
-  onSubmit() {}
+  onSubmit() {
+    const item = {
+      ... this.formGroup.value,
+      
+    }
+  }
 
   onChangePhone(event:Event){
     console.log("datos recibidos:", event)

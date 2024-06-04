@@ -19,13 +19,7 @@ import { FormComponent } from '../../components/form/form.component';
   templateUrl: './register-owner.component.html',
   styleUrl: './register-owner.component.scss',
 })
-export class RegisterOwnerComponent implements OnInit {
-  _formSVC = inject(FormService);
-
-  public form!: any;
-
-  public businessName: FormControl = new FormControl('', Validators.required);
-
+export class RegisterOwnerComponent {
   public registerOwnerForm = {
     title: 'Registra tu negocio',
     inputs: [
@@ -89,7 +83,7 @@ export class RegisterOwnerComponent implements OnInit {
         ],
       },
       {
-        label: 'De que tipo es tu negocio?',
+        label: 'Que es lo que le ofreces a tus clientes?',
         required: true,
         options: [
           {
@@ -105,20 +99,34 @@ export class RegisterOwnerComponent implements OnInit {
           },
         ],
         type: 'radio-input',
-        FormControlName: 'businessName',
+        FormControlName: '',
         autocomplete: 'off',
         validators: [
           {
             type: 'required',
-            message: 'El nombre del negocio es obligatorio.',
+            message: 'Este campo es obligatorio.',
           },
         ],
       },
     ],
   };
 
-  ngOnInit(): void {
-    /*  this.form = this._formSVC.buildFormControls(this.inputs);
-    console.log('FORM GENERADO:', this.form); */
-  }
+  businessTypes = [
+    { name: 'Ropa y Accesorios', icon: 'fa fa-tshirt' },
+    { name: 'Electrónica', icon: 'fa fa-tv' },
+    { name: 'Alimentos y Bebidas', icon: 'fa fa-utensils' },
+    { name: 'Juguetes', icon: 'fa fa-puzzle-piece' },
+    { name: 'Libros', icon: 'fa fa-book' },
+    { name: 'Muebles', icon: 'fa fa-couch' },
+    { name: 'Artículos Deportivos', icon: 'fa fa-football-ball' },
+    { name: 'Herramientas y Equipos', icon: 'fa fa-tools' },
+    { name: 'Productos de Belleza', icon: 'fa fa-magic' },
+    { name: 'Instrumentos Musicales', icon: 'fa fa-guitar' },
+    { name: 'Joyería', icon: 'fa fa-ring' },
+    { name: 'Artículos para el Hogar', icon: 'fa fa-home' },
+    { name: 'Jardinería', icon: 'fa fa-seedling' },
+    { name: 'Mascotas y Accesorios', icon: 'fa fa-paw' },
+    { name: 'Productos de Oficina', icon: 'fa fa-briefcase' },
+    { name: 'Vehículos y Accesorios', icon: 'fa fa-car' },
+  ];
 }

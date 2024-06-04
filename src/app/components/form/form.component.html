@@ -37,12 +37,12 @@
         }
         @if(input.type === "radio-input"){
             <radio-input
-        label="De que tipo es tu negocio?"
+        [label]="input.label"
         [options]="input.options"
         (changeOption)="changeTipoNegocio($event)"
       ></radio-input>
         }
       }
-
+      <button type="submit" >Submit</button>
     </form> 
   </div>
