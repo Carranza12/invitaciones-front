@@ -1,3 +1,105 @@
+<div class="container">
+  <h1 class="poppins-bold">Registra tu negocio</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!-- Información General del Propietario del Negocio -->
+    <div class="form_section">
+      <h2 (click)="isHiddenGeneralInformationUser = !isHiddenGeneralInformationUser">
+        @if (isHiddenGeneralInformationUser) {
+            <span class="icons" >►</span>
+        }
+        @if (!isHiddenGeneralInformationUser) {
+            <span class="icons">▼</span>
+        }
+        Información General del Propietario
+      </h2>
 
-<app-form [form]="registerOwnerForm"></app-form>
+      @if (!isHiddenGeneralInformationUser) {
+      <div class="form_child" style="margin-top: 40px;">
+        <p>Nombre completo <span class="required">*</span></p>
+        <input
+          class="form_input"
+          type="text"
+          formControlName="nombre_completo"
+          autocomplete="off"
+        />
+        @if (form.get('nombre_completo')?.hasError('required') &&
+        form.get('nombre_completo')?.touched) {
+        <div class="error-message">El nombre completo es obligatorio.</div>
+        }
+      </div>
 
+      <div class="form_child">
+        <p>Correo Electrónico <span class="required">*</span></p>
+        <input
+          class="form_input"
+          type="email"
+          formControlName="email"
+          autocomplete="off"
+        />
+        @if(form.get('email')?.hasError('required') &&
+        form.get('email')?.touched){
+        <div class="error-message">El correo electrónico es obligatorio.</div>
+        } @if(form.get('email')?.hasError('email') &&
+        form.get('email')?.touched){
+        <div class="error-message">Introduce un email válido.</div>
+        }
+      </div>
+
+      <date-input
+        (dateSelected)="onChangeDate($event)"
+        [data]="{
+          title: 'Fecha de nacimiento',
+          formControlName: 'fecha_nacimiento'
+        }"
+      ></date-input>
+
+      <phone-input
+        (phone)="onChangePhone($event)"
+        title="Número de Teléfono"
+      ></phone-input>
+      }
+    </div>
+
+   
+    <div class="form_section">
+      <h2 (click)="isHiddenGeneralInformationBusiness = !isHiddenGeneralInformationBusiness" >
+        @if (isHiddenGeneralInformationBusiness) {
+            <span class="icons" >►</span>
+        }
+        @if (!isHiddenGeneralInformationBusiness) {
+            <span class="icons">▼</span>
+        }
+        Información General del Negocio
+    </h2>
+
+      @if (!isHiddenGeneralInformationBusiness) {
+        <div class="form_child" style="margin-top: 40px;">
+            <p>Nombre del negocio <span class="required">*</span></p>
+            <input
+              class="form_input"
+              type="text"
+              formControlName="businessName"
+              autocomplete="off"
+            />
+            <div
+              class="error-message"
+              *ngIf="
+                form.get('businessName')?.hasError('required') &&
+                form.get('businessName')?.touched
+              "
+            >
+              El nombre del negocio es obligatorio.
+            </div>
+          </div>
+    
+          <radio-input
+            label="¿Qué es lo que le ofreces a tus clientes?"
+            [options]="optionsTypeBusiness"
+            (changeOption)="changeTipoNegocio($event)"
+          ></radio-input>
+     }
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
