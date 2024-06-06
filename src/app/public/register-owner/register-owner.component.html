@@ -3,18 +3,20 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <!-- Información General del Propietario del Negocio -->
     <div class="form_section">
-      <h2 (click)="isHiddenGeneralInformationUser = !isHiddenGeneralInformationUser">
+      <h2
+        (click)="
+          isHiddenGeneralInformationUser = !isHiddenGeneralInformationUser
+        "
+      >
         @if (isHiddenGeneralInformationUser) {
-            <span class="icons" >►</span>
-        }
-        @if (!isHiddenGeneralInformationUser) {
-            <span class="icons">▼</span>
-        }
-        Información General del Propietario
+        <span class="icons">►</span>
+        } @if (!isHiddenGeneralInformationUser) {
+        <span class="icons">▼</span>
+        } Información General del Propietario
       </h2>
 
       @if (!isHiddenGeneralInformationUser) {
-      <div class="form_child" style="margin-top: 40px;">
+      <div class="form_child" style="margin-top: 40px">
         <p>Nombre completo <span class="required">*</span></p>
         <input
           class="form_input"
@@ -60,44 +62,41 @@
       }
     </div>
 
-   
     <div class="form_section">
-      <h2 (click)="isHiddenGeneralInformationBusiness = !isHiddenGeneralInformationBusiness" >
+      <h2
+        (click)="
+          isHiddenGeneralInformationBusiness =
+            !isHiddenGeneralInformationBusiness
+        "
+      >
         @if (isHiddenGeneralInformationBusiness) {
-            <span class="icons" >►</span>
-        }
-        @if (!isHiddenGeneralInformationBusiness) {
-            <span class="icons">▼</span>
-        }
-        Información General del Negocio
-    </h2>
+        <span class="icons">►</span>
+        } @if (!isHiddenGeneralInformationBusiness) {
+        <span class="icons">▼</span>
+        } Información General del Negocio
+      </h2>
 
       @if (!isHiddenGeneralInformationBusiness) {
-        <div class="form_child" style="margin-top: 40px;">
-            <p>Nombre del negocio <span class="required">*</span></p>
-            <input
-              class="form_input"
-              type="text"
-              formControlName="businessName"
-              autocomplete="off"
-            />
-            <div
-              class="error-message"
-              *ngIf="
-                form.get('businessName')?.hasError('required') &&
-                form.get('businessName')?.touched
-              "
-            >
-              El nombre del negocio es obligatorio.
-            </div>
-          </div>
-    
-          <radio-input
-            label="¿Qué es lo que le ofreces a tus clientes?"
-            [options]="optionsTypeBusiness"
-            (changeOption)="changeTipoNegocio($event)"
-          ></radio-input>
-     }
+      <div class="form_child" style="margin-top: 40px">
+        <p>Nombre del negocio <span class="required">*</span></p>
+        <input
+          class="form_input"
+          type="text"
+          formControlName="businessName"
+          autocomplete="off"
+        />
+        @if (form.get('businessName')?.hasError('required') &&
+        form.get('businessName')?.touched) {
+        <div class="error-message">El nombre del negocio es obligatorio.</div>
+        }
+      </div>
+
+      <radio-input
+        label="¿Qué es lo que le ofreces a tus clientes?"
+        [options]="optionsTypeBusiness"
+        (changeOption)="changeTipoNegocio($event)"
+      ></radio-input>
+      }
     </div>
 
     <button type="submit">Submit</button>

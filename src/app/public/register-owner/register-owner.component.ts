@@ -27,8 +27,8 @@ import { FormComponent } from '../../components/form/form.component';
   styleUrl: './register-owner.component.scss',
 })
 export class RegisterOwnerComponent {
-  isHiddenGeneralInformationUser: boolean = true;
-  isHiddenGeneralInformationBusiness: boolean = true;
+  isHiddenGeneralInformationUser: boolean = false;
+  isHiddenGeneralInformationBusiness: boolean = false;
   public optionsTypeBusiness = [
     {
       text: 'Servicio',
