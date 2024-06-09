@@ -13,6 +13,7 @@ export class RadioInputComponent {
   @Output() changeOption = new EventEmitter<any>();
   public selectedOption = '';
   selectOption(value: any) {
+    console.log("click...")
     this.selectedOption = value;
     this.changeOption.emit(value)
   }

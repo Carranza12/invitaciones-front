@@ -12,7 +12,9 @@ import { PhoneInputComponent } from '../../components/phone-input/phone-input.co
 import { DateInputComponent } from '../../components/date-input/date-input.component';
 import { RadioInputComponent } from '../../components/radio-input/radio-input.component';
 import { FormComponent } from '../../components/form/form.component';
-
+import { RegisterService } from '../register.service.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register-owner',
   standalone: true,
@@ -27,6 +29,8 @@ import { FormComponent } from '../../components/form/form.component';
   styleUrl: './register-owner.component.scss',
 })
 export class RegisterOwnerComponent {
+  private _registerSVC = inject(RegisterService)
+  private _routerSVC = inject(Router)
   isHiddenGeneralInformationUser: boolean = false;
   isHiddenGeneralInformationBusiness: boolean = false;
   public optionsTypeBusiness = [
@@ -41,88 +45,17 @@ export class RegisterOwnerComponent {
       image: 'https://cdn-icons-png.flaticon.com/512/1170/1170679.png',
       value: 'producto',
     },
+    {
+      text: 'Ambos',
+      image: 'https://cdn-icons-png.flaticon.com/512/50/50849.png',
+      value: 'ambos',
+    },
   ];
-  public registerOwnerForm = {
-    title: 'Registra tu negocio',
-    inputs: [
-      {
-        label: 'Nombre completo',
-        required: true,
-        type: 'text',
-        FormControlName: 'nombre_completo',
-        autocomplete: 'off',
-        validators: [
-          {
-            type: 'required',
-            message: 'El nombre completo es obligatorio.',
-          },
-        ],
-      },
-      {
-        label: 'Correo Electronico',
-        required: true,
-        type: 'text',
-        FormControlName: 'email',
-        autocomplete: 'off',
-        validators: [
-          {
-            type: 'required',
-            message: 'El Correo Electronico es obligatorio.',
-          },
-          {
-            type: 'email',
-            message: 'Introduce un email valido.',
-          },
-        ],
-      },
-      {
-        label: 'Fecha de nacimiento',
-        required: true,
-        type: 'date-input',
-        FormControlName: 'fecha_nacimiento',
-        autocomplete: 'off',
-        validators: [],
-      },
-      {
-        label: 'Número de Teléfono',
-        required: true,
-        FormControlName: '',
-        type: 'phone-input',
-        autocomplete: 'off',
-        validators: [],
-      },
-      {
-        label: 'Nombre del negocio',
-        required: true,
-        type: 'text',
-        FormControlName: 'businessName',
-        autocomplete: 'off',
-        validators: [
-          {
-            type: 'required',
-            message: 'El nombre del negocio es obligatorio.',
-          },
-        ],
-      },
-      {
-        label: 'Que es lo que le ofreces a tus clientes?',
-        required: true,
-        options: [],
-        type: 'radio-input',
-        FormControlName: '',
-        autocomplete: 'off',
-        validators: [
-          {
-            type: 'required',
-            message: 'Este campo es obligatorio.',
-          },
-        ],
-      },
-    ],
-  };
+
 
   public form = new FormGroup({
-    nombre_completo: new FormControl('', Validators.required),
+    name: new FormControl('', Validators.required),
+    last_name: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
     fecha_nacimiento: new FormControl('', Validators.required),
     phone: new FormControl('', Validators.required),
@@ -149,20 +82,39 @@ export class RegisterOwnerComponent {
     { name: 'Vehículos y Accesorios', icon: 'fa fa-car' },
   ];
 
-  onChangePhone(event: Event) {
-    console.log('datos recibidos:', event);
+  onChangePhone(event: any) {
+    this.form.controls['phone'].setValue(`${event.code} ${event.number}`)
   }
-  onChangeDate(event: Event) {
+ /*  onChangeDate(event: Event) {
     console.log('datos recibidos:', event);
-  }
-  changeTipoNegocio(event: Event) {
-    console.log('datos recibidos:', event);
+  } */
+  changeTipoNegocio(event: string) {
+    this.form.controls['typeBusiness'].setValue(event)
   }
 
   onSubmit() {
+    if(!this.form.controls['email'].value || !this.form.controls['name'].value || !this.form.controls['last_name'].value
+      || !this.form.controls['businessName'].value || !this.form.controls['typeBusiness'].value || !this.form.controls['phone'].value 
+    ){
+      this.form.markAllAsTouched()
+      return;
+    }
+    console.log("llego aqui")
     const item = {
-      ...this.form.value,
+      email: this.form.controls['email'].value || '',
+      name: this.form.controls['name'].value || '',
+      last_name: this.form.controls['last_name'].value || '',
+      bussinessName: this.form.controls['businessName'].value || '',
+      typeBusiness: this.form.controls['typeBusiness'].value || '',
+      phone: this.form.controls['phone'].value || '',
     };
-    console.log('ITEM:', item);
+    this._registerSVC.createNewOwner(item).subscribe(
+      (response: any) => {
+       this._routerSVC.navigateByUrl("/owner/register/end")
+      },
+      (error: any) => {
+        console.error('Error al registrar el usuario', error);
+      }
+    );
   }
 }

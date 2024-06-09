@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, Output, input, output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  input,
+  output,
+} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -15,7 +22,7 @@ import {
 })
 export class PhoneInputComponent {
   @Output() phone = new EventEmitter<any>();
-  @Input() title!:string;
+  @Input() title!: string;
   phoneForm!: FormGroup;
   countries = [
     { name: 'United States', code: 'US', dialCode: '+1', flag: '🇺🇸' },
@@ -58,10 +65,15 @@ export class PhoneInputComponent {
 
     this.phoneForm.controls['phone'].valueChanges.subscribe((value: string) => {
       if (value) {
-        this.phone.emit({
-          code: this.phoneForm.controls['country'].value || '',
-          number: value,
-        });
+        if (
+          this.phoneForm.controls['country'].valid &&
+          this.phoneForm.controls['phone'].valid
+        ) {
+          this.phone.emit({
+            code: this.phoneForm.controls['country'].value || '',
+            number: value,
+          });
+        }
       }
     });
   }
@@ -70,22 +82,16 @@ export class PhoneInputComponent {
     const selectElement = event.target as HTMLSelectElement;
     this.selectedDialCode = selectElement.value;
     this.phoneForm.controls['country'].setValue(this.selectedDialCode);
-    this.phone.emit({
-      code: this.phoneForm.controls['country'].value || '',
-      number: this.phoneForm.controls['phone'].value || '',
-    });
-  }
-
-  onSubmit() {
-    if (this.phoneForm.valid) {
-      const formData = this.phoneForm.value;
-      console.log('País seleccionado:', formData.country);
-      console.log(
-        'Número de teléfono:',
-        this.selectedDialCode + formData.phone
-      );
-    } else {
-      console.log('Formulario inválido');
+    if (
+      this.phoneForm.controls['country'].valid &&
+      this.phoneForm.controls['phone'].valid
+    ) {
+      this.phone.emit({
+        code: this.phoneForm.controls['country'].value || '',
+        number: this.phoneForm.controls['phone'].value || '',
+      });
     }
   }
+
+
 }

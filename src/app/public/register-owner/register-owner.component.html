@@ -8,25 +8,35 @@
           isHiddenGeneralInformationUser = !isHiddenGeneralInformationUser
         "
       >
-        @if (isHiddenGeneralInformationUser) {
-        <span class="icons">►</span>
-        } @if (!isHiddenGeneralInformationUser) {
-        <span class="icons">▼</span>
-        } Información General del Propietario
+         Información General del Propietario
       </h2>
 
-      @if (!isHiddenGeneralInformationUser) {
+ 
       <div class="form_child" style="margin-top: 40px">
-        <p>Nombre completo <span class="required">*</span></p>
+        <p>Nombres <span class="required">*</span></p>
         <input
           class="form_input"
           type="text"
-          formControlName="nombre_completo"
+          formControlName="name"
           autocomplete="off"
         />
-        @if (form.get('nombre_completo')?.hasError('required') &&
-        form.get('nombre_completo')?.touched) {
-        <div class="error-message">El nombre completo es obligatorio.</div>
+        @if (form.get('name')?.hasError('required') &&
+        form.get('name')?.touched) {
+        <div class="error-message">Este campo es obligatorio.</div>
+        }
+      </div>
+
+      <div class="form_child" style="margin-top: 40px">
+        <p>Apellidos <span class="required">*</span></p>
+        <input
+          class="form_input"
+          type="text"
+          formControlName="last_name"
+          autocomplete="off"
+        />
+        @if (form.get('last_name')?.hasError('required') &&
+        form.get('last_name')?.touched) {
+        <div class="error-message">Este campo es obligatorio.</div>
         }
       </div>
 
@@ -47,19 +57,19 @@
         }
       </div>
 
-      <date-input
+      <!-- <date-input
         (dateSelected)="onChangeDate($event)"
         [data]="{
           title: 'Fecha de nacimiento',
           formControlName: 'fecha_nacimiento'
         }"
-      ></date-input>
+      ></date-input> -->
 
       <phone-input
         (phone)="onChangePhone($event)"
         title="Número de Teléfono"
       ></phone-input>
-      }
+      
     </div>
 
     <div class="form_section">
@@ -69,14 +79,10 @@
             !isHiddenGeneralInformationBusiness
         "
       >
-        @if (isHiddenGeneralInformationBusiness) {
-        <span class="icons">►</span>
-        } @if (!isHiddenGeneralInformationBusiness) {
-        <span class="icons">▼</span>
-        } Información General del Negocio
+      Información General del Negocio
       </h2>
 
-      @if (!isHiddenGeneralInformationBusiness) {
+    
       <div class="form_child" style="margin-top: 40px">
         <p>Nombre del negocio <span class="required">*</span></p>
         <input
@@ -96,7 +102,7 @@
         [options]="optionsTypeBusiness"
         (changeOption)="changeTipoNegocio($event)"
       ></radio-input>
-      }
+  
     </div>
 
     <button type="submit">Submit</button>
