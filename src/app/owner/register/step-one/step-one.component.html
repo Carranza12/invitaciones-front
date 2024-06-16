@@ -11,6 +11,30 @@
   </p>
 
   <form class="max-w-md mx-auto" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="relative z-0 w-full mb-5 group">
+      <input
+        type="text"
+        name="floating_email"
+        id="floating_email"
+        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        placeholder=" "
+        required
+        formControlName="name"
+      />
+      <label
+        for="floating_email"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >Nombre completo</label
+      >
+      @if(form.controls['name'].hasError('required') && form.controls['name'].touched){
+        <div class="flex items-center bg-red-500 text-white rounded-md mt-2 py-2 px-3">
+          <i class="fas fa-exclamation-circle mr-2"></i>
+          <p>El Nombre completo es un campo obligatorio.</p>
+        </div>
+      }
+    </div>
+
     <div class="relative z-0 w-full mb-5 group">
       <input
         type="email"
@@ -26,6 +50,18 @@
         class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
         >Correo electronico</label
       >
+      @if(form.controls['email'].hasError('required') && form.controls['email'].touched){
+        <div class="flex items-center bg-red-500 text-white rounded-md mt-2 py-2 px-3">
+          <i class="fas fa-exclamation-circle mr-2"></i>
+          <p>El Correo electronico es un campo obligatorio.</p>
+        </div>
+      }
+      @if(form.controls['email'].hasError('email') && form.controls['email'].touched){
+        <div class="flex items-center bg-red-500 text-white rounded-md mt-2 py-2 px-3">
+          <i class="fas fa-exclamation-circle mr-2"></i>
+          <p>Formato no valido.</p>
+        </div>
+      }
     </div>
 
     <div class="relative z-0 w-full mb-5 group">
@@ -45,30 +81,44 @@
         >Espacio de trabajo</label>
        
 
-        <p class="text-xs m-1 ml-0 font-semibold">Ejemplo: workspace.tuNegocio.com</p>
+        <p class="text-xs m-1 ml-0 font-semibold">Ejemplo: myCompany</p>
       
-        <span class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm font-medium text-gray-500">.tuNegocio.com</span>
        
-        @if(showTextHasSpaces){
+        @if(form.controls['workspace'].hasError('required') && form.controls['workspace'].touched){
+          <div class="flex items-center bg-red-500 text-white rounded-md mt-2 py-2 px-3">
+            <i class="fas fa-exclamation-circle mr-2"></i>
+            <p>El Espacio de trabajo es un campo obligatorio.</p>
+          </div>
+        }
+
+        @if(showTextHasSpaces && form.controls['workspace'].touched){
             <div class="flex items-center bg-red-500 text-white rounded-md mt-2 py-2 px-3">
               <i class="fas fa-exclamation-circle mr-2"></i>
               <p>El espacio de trabajo no puede contener espacios en blanco.</p>
             </div>
           }
 
-          <div>
-            <div class="flex items-center bg-green-500 text-white rounded-md mt-2 py-2 px-3">
-              <i class="fas fa-check-circle mr-2"></i>
-              <p>Espacio de trabajo disponible</p>
+          @if(showWorkspaceInvalid && form.controls['workspace'].touched ){
+            <div>
+              <div class="flex items-center bg-red-500 text-white rounded-md mt-2 py-2 px-3">
+                <i class="fas fa-exclamation-triangle mr-2"></i>
+                <p>Espacio de trabajo ya está en uso</p>
+              </div>
             </div>
-          </div>
+          }
 
-          <div>
-            <div class="flex items-center bg-red-500 text-white rounded-md mt-2 py-2 px-3">
-              <i class="fas fa-exclamation-triangle mr-2"></i>
-              <p>Espacio de trabajo ya está en uso</p>
-            </div>
-          </div>
+          @if(!showWorkspaceInvalid && form.controls['workspace'].touched && !form.controls['workspace'].hasError('required') && !showTextHasSpaces){
+            <div>
+              <div class="flex items-center bg-green-500 text-white rounded-md mt-2 py-2 px-3">
+                <i class="fas fa-check-circle mr-2"></i>
+                <p>Espacio de trabajo disponible</p>
+              </div>
+            </div>          
+          }
+
+         
+          
+          
     </div>
     
     

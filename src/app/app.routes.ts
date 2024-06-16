@@ -5,6 +5,7 @@ import { superAdminGuard } from './superadmin/guards/superadmin.guard';
 import { RegisterOwnerComponent } from './public/register-owner/register-owner.component';
 import { Step1EndComponent } from './public/step1-end/step1-end.component';
 import { RegisterStepOneComponent } from './owner/register/step-one/step-one.component';
+import { RegisterStepTwoComponent } from './owner/register/step-two/step-two.component';
 
 export const routes: Routes = [
     {
@@ -23,6 +24,10 @@ export const routes: Routes = [
     {
         path: "owner/register/stepOne",
         component: RegisterStepOneComponent
+    },
+    {
+        path: "owner/register/stepTwo",
+        component: RegisterStepTwoComponent
     },
     {
         path: "owner/register/end",
