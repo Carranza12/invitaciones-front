@@ -4,10 +4,11 @@ import { Router } from '@angular/router';
 import { LoadingService } from '../../../services/loading.service';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../services/auth.service';
+import { SharedModule } from '../../../shared/shared.module';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, SharedModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

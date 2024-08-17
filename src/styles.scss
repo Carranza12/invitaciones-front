@@ -1,139 +1,47 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100&display=swap");
 
+html,
 body {
-  font-family: "Roboto", sans-serif; 
-  background-color: #f5f5f5; 
+  height: 100%;
 }
-* {
-  box-sizing: border-box;
+body {
   margin: 0;
-  padding: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
 }
 
-.poppins-thin {
-  font-family: "Poppins", sans-serif;
-  font-weight: 100;
-  font-style: normal;
+.example-full-width {
+  width: 100%;
+}
+h3{font-size: 22px!important;}
+.content{
+  height: 97vh;
+  width: calc(100vw - 270px);
+  margin-left: 260px;
+  margin-right: 10px;
+  margin-top: 10px;
+  @media (max-width: 1025px){
+    margin-left:20px;
+    margin-top: 70px;
+    width: 85vw;
+  }
+}
+.form_list{
+  padding: 20px;
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex-wrap: wrap;
+  @media (max-width: 1025px){
+    width: 400px;
+  }
 }
 
-.poppins-extralight {
-  font-family: "Poppins", sans-serif;
-  font-weight: 200;
-  font-style: normal;
-}
-
-.poppins-light {
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-}
-
-.poppins-regular {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.poppins-medium {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-}
-
-.poppins-semibold {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-}
-
-.poppins-bold {
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.poppins-extrabold {
-  font-family: "Poppins", sans-serif;
-  font-weight: 800;
-  font-style: normal;
-}
-
-.poppins-black {
-  font-family: "Poppins", sans-serif;
-  font-weight: 900;
-  font-style: normal;
-}
-
-.poppins-thin-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 100;
-  font-style: italic;
-}
-
-.poppins-extralight-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 200;
-  font-style: italic;
-}
-
-.poppins-light-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: italic;
-}
-
-.poppins-regular-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.poppins-medium-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-style: italic;
-}
-
-.poppins-semibold-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-style: italic;
-}
-
-.poppins-bold-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-style: italic;
-}
-
-.poppins-extrabold-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 800;
-  font-style: italic;
-}
-
-
-
-.poppins-black-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 900;
-  font-style: italic;
-}
-Read our FAQ
-
-.main_container {
-  width: calc(100vw - 200px);
-  margin-left: 200px;
-  padding: 10px;
-  height: 100vh;
-  @media (max-width: 1024px) {
-    width: 100vw;
-    margin-left: 0px;
-}
-}
 
 .table_grid {
   border-collapse: collapse;
@@ -164,9 +72,10 @@ Read our FAQ
   background-color: #e0e0e0;
 }
 
+/* Media query para pantallas de 320px o más */
 @media screen and (min-width: 340px) {
   .table_grid {
-    width: 100%; 
+    width: 100%; /* Ajusta el ancho al 100% para pantallas pequeñas */
   }
   
 }
@@ -244,109 +153,117 @@ Read our FAQ
   cursor: pointer;
 }
 
-.form_input,
-.form_input select {
-  height: 40px;
-  border: none;
-  background: #efefef;
-  outline: none;
-  border-radius: 8px;
-  padding: 10px;
-  color: #8d8b8b;
-  @media(max-width:473px){
-    width: 100%!important;
-  }
-  margin-bottom: 10px;
-  width: 70%;
-}
 
-.form_textarea{
-  width: 70%;
-  height: 130px!important;
-}
-
-.label_input{
-  margin: 0px;
-  padding: 5px;
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.form_control{
+.search-container {
   display: flex;
-  flex-direction: column;
-  gap: 0;
+  align-items: center;
 
 }
 
-.form_input select {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-position: right center;
-  background-repeat: no-repeat;
-  background-size: 16px;
-  padding-right: 30px;
-  cursor: pointer;
+.search-input {
+  padding: 8px;
+  margin-right: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.form_input select:focus {
-  background-color: #ffffff;
-}
-
-.error-message {
-  color: red;
-  font-weight: 500;
-}
-
-.input-file {
-  display: none;
-}
-.deshabilitado {
-  pointer-events: none; 
-}
-
-.custom-file-button {
-  display: flex;
-  padding: 10px 10px 20px;
-  background-color: #b21e36;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-family: "Roboto", sans-serif;
-  transition: background-color 0.3s ease;
-  width:fit-content;
-  justify-content: center;
-}
-
-.custom-file-button:hover {
-  background-color: #1d7971;
-}
-
-.checkbox_input {
-  width: 20px;
-  height: 20px;
-  border-radius: 13px;
-  
-}
-
-.firma_container{
-    border: 1px dashed #000;
-    margin-bottom: 20px;
-    width: 400px;
-}
-
-.form_control_check{
-  width: 60%;
+.filtros {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  font-size: 14px;
-  gap: 15px;
-  div{
-    display: flex;
-    gap: 5px;
-    font-weight: 500;
-  }
+  align-items: stretch; 
+  width: 99%;
+  flex-direction: column;
+}
+
+.inputs-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  width: 70%; 
+  grid-gap: 0px;
+}
+
+.input-group {
+  margin-right: 10px;
+  flex: 1;
+}
+
+.button-group {
+  align-self: flex-end;
+  margin-top: 10px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input[type="text"],
+.input-group select {
+  width: calc(100% - 10px); 
+  padding: 5px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+}
+
+.filtros hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.filtros input[type="button"] {
+  margin-left: auto;
+  margin-right: 30px;
+  background-color: #b21e36;
+  color: #fff;
+  border: 0;
+  width: 100px;
+  border-radius: 20px;
+  padding: 10px;
+}
+.buttons{
+  display: flex;
+  margin-bottom: 20px;
+}
+
+
+
+.file-upload {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #3f51b5;
+  color: white;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-file-upload:hover {
+  background-color: #303f9f;
+}
+
+#file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+span {
+  margin-left: 8px;
 }

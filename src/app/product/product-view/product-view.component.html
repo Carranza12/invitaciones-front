@@ -1,0 +1,45 @@
+<sidebar></sidebar>
+<div class="content">
+  <h3><strong>{{action}} - Producto</strong></h3>
+  <mat-tab-group>
+    <mat-tab label="Informacion del producto">
+      <div class="form_list">
+        <mat-form-field>
+          <mat-label>Nombre del producto</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field class="textarea">
+          <mat-label>Descripción del producto</mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Categoría</mat-label>
+          <mat-select>
+            <mat-option value="one">Categoría 1</mat-option>
+            <mat-option value="two">Categoría 2</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>SubCategoría</mat-label>
+          <mat-select>
+            <mat-option value="one">subcategoría 1</mat-option>
+            <mat-option value="two">subcategoría 2</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Proveedor</mat-label>
+          <mat-select>
+            <mat-option value="one">proveedor 1</mat-option>
+            <mat-option value="two">proveedor 2</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <section class="example-section" >
+          <mat-label><strong>Selecciona las sucursales en las que se encuentra disponible tu producto</strong></mat-label>
+          <p><mat-checkbox >Pepperoni</mat-checkbox></p>
+          <p><mat-checkbox>Extra Cheese</mat-checkbox></p>
+          <p><mat-checkbox >Mushroom</mat-checkbox></p>
+        </section>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

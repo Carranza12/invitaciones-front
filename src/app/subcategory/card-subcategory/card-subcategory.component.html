@@ -1,0 +1,12 @@
+<mat-card class="example-card" appearance="outlined">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{ source.name }}</mat-card-title>
+    <mat-card-subtitle>Estatus actual: {{ source.status }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image width="300px" height="300px" style="object-fit: cover;margin: 0 auto;" [src]="source.image" alt="" />
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" mat-dialog-close >Cerrar</button>
+  
+  </mat-dialog-actions>
+</mat-card>

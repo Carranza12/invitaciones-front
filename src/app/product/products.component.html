@@ -1,0 +1,105 @@
+<sidebar></sidebar>
+<main class="content">
+  <h3><strong>Producto</strong></h3>
+  <form class="" [formGroup]="filtrosForm" (ngSubmit)="onSubmit()">
+    <div class="filtros">
+      <h3>Filtros de búsqueda</h3>
+      <hr />
+      <div class="inputs-container">
+        <div class="input-group">
+          <mat-form-field>
+            <mat-label>Nombre del producto</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </div>
+        <div class="input-group">
+          <mat-form-field>
+            <mat-label>Nombre del producto</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </div>
+        <div class="input-group">
+          <mat-form-field>
+            <mat-label>Nombre del producto</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </div>
+        <div class="input-group">
+          <label for="rol">Rol:</label>
+          <select id="rol" name="role_default" formControlName="role_default">
+            <option value="superAdmin">SuperAdmin</option>
+            <option value="maestro">Maestro</option>
+            <option value="estudiante">Estudiante</option>
+            <option value="trabajador">Trabajador</option>
+            <option value="" selected>Todos</option>
+          </select>
+        </div>
+      </div>
+      <div class="button-group">
+        <input type="button" value="Buscar" (click)="search()" />
+      </div>
+    </div>
+  </form>
+  <div>
+    <div class="buttons">
+      <button
+        type="button"
+        class="btn_primary"
+        (click)="router.navigateByUrl('/superAdmin/product/view')"
+      >
+        Nuevo producto
+      </button>
+    </div>
+
+    <table class="table_grid">
+      <thead>
+        <tr>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Email</th>
+          <th>Roles</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of usuariosList; track $index) {
+        <tr>
+          <td>{{ user.name }}</td>
+          <td>{{ user.last_name }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            @for (role of user.roles; track $index) {
+            <p>{{ role }}</p>
+            }
+          </td>
+          <td class="icon_container">
+            <button
+              type="button"
+              class="btn_icon"
+              (click)="
+                router.navigateByUrl('/superAdmin/usuarios/edicion/' + user._id)
+              "
+            >
+              ✎
+            </button>
+            <button
+              type="button"
+              class="btn_icon"
+              (click)="deleteUser(user._id)"
+            >
+              ✘
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    <br />
+    <br />
+    <app-paginator
+      [currentPage]="currentPage"
+      [totalPages]="totalPages"
+      (change)="changePage($event)"
+    ></app-paginator>
+  </div>
+</main>

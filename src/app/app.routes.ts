@@ -6,6 +6,10 @@ import { RegisterOwnerComponent } from './public/register-owner/register-owner.c
 import { Step1EndComponent } from './public/step1-end/step1-end.component';
 import { RegisterStepOneComponent } from './owner/register/step-one/step-one.component';
 import { RegisterStepTwoComponent } from './owner/register/step-two/step-two.component';
+import { ProductsComponent } from './product/products.component';
+import { ProductViewComponent } from './product/product-view/product-view.component';
+import { SubcategoryComponent } from './subcategory/subcategory.component';
+import { categoryComponent } from './category/category.component';
 
 export const routes: Routes = [
     {
@@ -18,20 +22,24 @@ export const routes: Routes = [
         canActivate: [superAdminGuard]
     },
     {
-        path: "owner/register",
-        component: RegisterOwnerComponent
+        path: "superAdmin/products",
+        component: ProductsComponent,
+        canActivate: [superAdminGuard]
     },
     {
-        path: "owner/register/stepOne",
-        component: RegisterStepOneComponent
+        path: "superAdmin/product/view",
+        component: ProductViewComponent,
+        canActivate: [superAdminGuard]
     },
     {
-        path: "owner/register/stepTwo",
-        component: RegisterStepTwoComponent
+        path: "superAdmin/subcategory",
+        component: SubcategoryComponent,
+        canActivate: [superAdminGuard]
     },
     {
-        path: "owner/register/end",
-        component: Step1EndComponent
+        path: "superAdmin/category",
+        component: categoryComponent,
+        canActivate: [superAdminGuard]
     },
     {
         path: '',

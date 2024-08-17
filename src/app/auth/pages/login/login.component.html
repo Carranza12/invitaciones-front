@@ -6,30 +6,28 @@
       width="250px"
     />
     <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <input
-        type="text"
-        placeholder="Correo electrónico"
-        formControlName="email"
-      />
-      @if (loginForm.get('email')?.hasError('required') &&
-      loginForm.get('email')?.touched) {
-      <div class="error-message">El correo electrónico es requerido.</div>
-      } @if (loginForm.get('email')?.hasError('email') &&
-      loginForm.get('email')?.touched) {
-      <div class="error-message">El correo electrónico no es válido.</div>
-      }
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" placeholder="">
+        @if (loginForm.get('email')?.hasError('email') && !loginForm.get('email')?.hasError('required')) {
+          <mat-error>El correo electrónico no es válido.</mat-error>
+        }
+        @if (loginForm.get('email')?.hasError('required')) {
+          <mat-error>El correo electrónico es requerido.</mat-error>
+        }
+      </mat-form-field>
 
-      <input
-        type="password"
-        placeholder="Contraseña"
-        formControlName="password"
-      />
-      @if (loginForm.get('password')?.hasError('required') &&
-      loginForm.get('password')?.touched) {
-      <div class="error-message">La contraseña es requerida.</div>
-      }
+      <mat-form-field class="example-full-width">
+        <mat-label>Contrasena</mat-label>
+        <input type="password" matInput formControlName="password" placeholder="">
+        @if (loginForm.get('password')?.hasError('required')) {
+          <mat-error>La contrasena es requerida.</mat-error>
+        }
+      </mat-form-field>
 
-      <button type="submit">Entrar</button>
+    
+        <button style="width: 100%;"  type="submit" mat-flat-button>Entrar</button>
+
     </form>
   </div>
 </div>
