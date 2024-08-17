@@ -10,6 +10,7 @@ import { ProductsComponent } from './product/products.component';
 import { ProductViewComponent } from './product/product-view/product-view.component';
 import { SubcategoryComponent } from './subcategory/subcategory.component';
 import { categoryComponent } from './category/category.component';
+import { InvitationComponent } from './invitation/invitation.component';
 
 export const routes: Routes = [
     {
@@ -39,6 +40,11 @@ export const routes: Routes = [
     {
         path: "superAdmin/category",
         component: categoryComponent,
+        canActivate: [superAdminGuard]
+    },
+    {
+        path: "invitations",
+        component: InvitationComponent,
         canActivate: [superAdminGuard]
     },
     {

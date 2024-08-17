@@ -1,0 +1,65 @@
+<sidebar></sidebar>
+<form [formGroup]="filtrosForm">
+  <div class="content">
+    <div class="inventory-container">
+      <mat-toolbar>
+        <span><strong>Invitaciones</strong></span>
+        <span class="spacer"></span>
+        <button type="button" mat-raised-button color="primary" (click)="addNewRecord()">Agregar nueva</button>
+      </mat-toolbar>
+  
+      <mat-card>
+        <mat-form-field appearance="fill">
+          <mat-label>Buscar</mat-label>
+          <input formControlName="name" matInput  placeholder="Buscar por el nombre...">
+        </mat-form-field>
+  
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>Foto</th>
+            <td mat-cell *matCellDef="let element"><img [src]="hostNameBackend + '/' + element.image" width="50px" height="50px" style="object-fit: cover;" alt=""></td>
+          </ng-container>
+        
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Nombre del producto</th>
+            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+          </ng-container>
+        
+          <!-- Status Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Estatus</th>
+            <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+          </ng-container>
+        
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Acciones</th>
+            <td mat-cell *matCellDef="let element">
+              <button type="button" mat-icon-button color="accent" (click)="viewRecord(element)">
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button type="button" mat-icon-button color="warn" (click)="editRecord(element)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button type="button" mat-icon-button color="primary" (click)="deleteRecord(element._id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+        
+        <mat-paginator
+          [length]="totalItems"
+          [pageSize]="pageSize"
+          [pageSizeOptions]="pageSizeOptions"
+          (page)="handlePage($event)">
+        </mat-paginator>
+      </mat-card>
+    </div>
+  </div>
+</form>

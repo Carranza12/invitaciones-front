@@ -60,6 +60,16 @@
 </li>
       }
     
+      @if(userData.role === "superAdmin" || userData.role === "customer"){
+        <li
+        [ngClass]="{ active_session: actual_path === 'invitations' }"
+        (click)="navigateBy('/invitations')"
+      >
+        <a [ngClass]="{ text_dark: actual_path === 'invitations' }" ><i class="fas fa-envelope-open-text"></i>
+          Invitaciones</a>
+      </li>
+      }
+      
      
     </ul>
     <div class="social_media">

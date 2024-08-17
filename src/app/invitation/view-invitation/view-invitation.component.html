@@ -1,0 +1,50 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h3 mat-dialog-title>
+    <strong>{{ data.action }} - Invitacion</strong>
+  </h3>
+  <mat-dialog-content class="mat-typography">
+    <mat-form-field>
+      <mat-label>Nombre de la persona del evento</mat-label>
+      <input matInput type="text" formControlName="banner_name" />
+      @if (form.controls['banner_name'].hasError('required') && form.controls['banner_name'].touched ) {
+        <mat-error>Este campo es obligatorio*.</mat-error>
+      }
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+      <mat-label>Anade una frase de bienvenida para tu invitacion</mat-label>
+      <input matInput type="text" formControlName="banner_slogan" />
+      @if (form.controls['banner_slogan'].hasError('required') && form.controls['banner_slogan'].touched ) {
+        <mat-error>Este campo es obligatorio*.</mat-error>
+      }
+    </mat-form-field>
+    <br>
+    <!-- <mat-form-field>
+      <mat-label>Estatus</mat-label>
+      <mat-select formControlName="status">
+        <mat-option value="active">Activo</mat-option>
+        <mat-option value="inactive">Inactivo</mat-option>
+      </mat-select>
+      @if (form.controls['status'].hasError('required') && form.controls['status'].touched ) {
+        <mat-error>Este campo es obligatorio*.</mat-error>
+      }
+    </mat-form-field> -->
+    <mat-label>Imagen de fondo</mat-label>
+    <div class="file-upload">
+    @if(source){
+      <img [src]="source.image" width="140px" height="140px" style="object-fit: cover;" alt="">
+      <br>
+    }
+      <label for="file-input" class="custom-file-upload">
+        <mat-icon>attach_file</mat-icon> Seleccionar archivo
+      </label>
+      <input id="file-input" type="file" (change)="onFileSelected($event)" accept="image/*">
+      <span>{{ fileName || 'Ningun archivo seleccionado' }}</span>
+    </div>
+    
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" (click)="cancelDialog('80ms', '40ms')">Cancelar</button>
+    <button mat-button type="submit" cdkFocusInitial>Guardar</button>
+  </mat-dialog-actions>
+</form>
