@@ -84,6 +84,7 @@ export class InvitationComponent {
   addNewRecord() {
     const dialogRef = this.dialog.open(ViewInvitationComponent, {
       width: '600px',
+      height: '700px',
       disableClose: true,
       data: {
         action: 'Nueva',
